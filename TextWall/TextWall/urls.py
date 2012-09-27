@@ -3,8 +3,10 @@ from django.conf.urls import patterns, include, url
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
-
+from PasteText.views import *
 urlpatterns = patterns('',
+    (r'^$',new_paste),
+    (r'^([a-z0-9-]{8})+/$',show_paste),
     # Examples:
     # url(r'^$', 'TextWall.views.home', name='home'),
     # url(r'^TextWall/', include('TextWall.foo.urls')),
