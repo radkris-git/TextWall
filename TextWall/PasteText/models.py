@@ -9,5 +9,6 @@ class Content(models.Model):
     pasted_time = models.DateTimeField();
 
     def __unicode__(self):
-        return str(self.id) + " " +self.unique_hash_id + " "+self.content + " "+ str(self.pasted_time)
+        #return str(self.id) + " " +self.unique_hash_id + " "+self.content + " "+ str(self.pasted_time)
+        return str(self.id)
 

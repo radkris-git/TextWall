@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <script type="text/javascript" src="{% static "bootstrap/js/jquery-1.8.2.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.js" %}"></script>
+    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet" ></link>
+</head>
+<body>
+    <div class="container" id="header">
+    <div class="navbar  navbar-inverse">
+    <div class="navbar-inner">
+    <a class="brand" href="#">Paste Free !</a>
+    <ul class="nav">
+        <li ><a href="/">Create New Paste</a></li>
+        <li class="active"><a href="/recent">Recent Pastes</a></li>
+        <li><a href="#">Show Random Pastes</a></li>
+        </ul>
+     </div>
+     </div>
+     </div>
+    {% for paste in top10_source %}
+        <div class="container" style="font-size: 16px;font-family:Consolas;" class="prettyprint">
+            <span><a href="/{{ paste.unique_hash_id }}">
+            {% if paste.paste_title %}
+                Untitled
+            {% else %}
+                {{paste.paste_title}}
+            {% endif %}
+            </a>
+            </span>
+            <span style="text-align:right;"><strong>Pasted On {{ paste.pasted_time}}</strong></span>
+        </div>
+        <div class="container" >
+            <pre  style="font-size: 16px;font-family:Consolas;" class="prettyprint linenums">{{ paste.content }}</pre>
+        </div>
+    {% endfor %}
+
+</body>
+</html>

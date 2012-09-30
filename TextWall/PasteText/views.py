@@ -23,11 +23,6 @@ def handle_new_paste(request):
     title = str(request.POST.get('title'))
     if len(title) == 0:
         title = "Untitled"
-    print current_time
-    print hash_id
-    print title
-    print content
-
     contentData = Content(unique_hash_id = hash_id,content=content,pasted_time=current_time,paste_title=title)
     contentData.save()
 
@@ -51,3 +46,6 @@ def get_unique_id():
     x = str(full_id)
     return x[:8]
 
+def get_recent_paste(request):
+    top10_source = Content.objects.all().order_by("pasted_time").reverse()[:10]
+    return render_to_response("recent.html",locals())

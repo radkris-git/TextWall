@@ -7,6 +7,7 @@ from PasteText.views import *
 urlpatterns = patterns('',
     (r'^$',new_paste),
     (r'^([a-z0-9-]{8})+/$',show_paste),
+    (r'^recent/$',get_recent_paste),
     # Examples:
     # url(r'^$', 'TextWall.views.home', name='home'),
     # url(r'^TextWall/', include('TextWall.foo.urls')),
